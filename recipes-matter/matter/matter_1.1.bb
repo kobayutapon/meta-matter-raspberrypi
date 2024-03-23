@@ -21,6 +21,7 @@ FILES:${PN} += "usr/share"
 INSANE_SKIP:${PN} += "dev-so debug-deps strip"
 
 DEPLOY_TRUSTY = "${@bb.utils.contains('MACHINE_FEATURES', 'trusty', 'true', 'false', d)}"
+do_configure[network] = "1"
 
 def get_target_cpu(d):
     for arg in (d.getVar('TUNE_FEATURES') or '').split():
